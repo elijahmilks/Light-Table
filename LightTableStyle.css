@@ -1,0 +1,73 @@
+#LT-Container {
+	overflow: scroll;
+	height: 100%;
+	width: 100%;
+	white-space: nowrap;
+	font-size: 12px;
+}
+
+#LT-Container th {
+	padding: 10px 16px;
+	text-align: left;
+	background-color: #FFF;
+}
+
+#LT-Container th:not(:first-child) {
+	border-left: 1px solid #000;			
+}
+
+#LT-Container td {
+	padding: 8px 10px;
+	border: 1px solid #000;
+}
+
+#LT-Container td:not(:first-child) {
+	border-left: 1px solid #000;
+}
+
+#LT-Container th i:first-child {
+	margin-right: 8px;
+	top: 1px;
+	font-size: 16px;
+}
+
+#LT-Container th i:nth-child(2) {
+	margin-left: 20px;
+	top: 1px;
+	font-size: 16px;
+}
+
+#LT {
+	min-width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #000;
+}
+
+#LT-head-container {
+	position: absolute;
+	margin-left: -1px;
+}
+
+#LT-head-wrapper tr {
+	border: 1px solid #000;
+}
+
+.LT-closed {
+	width: 10px;
+	min-width: 0px !important;
+	font-size: 0px;
+	padding: 5px !important;
+}
+
+.LT-closed i {
+	display: none;
+}
+
+.Lt-closed img {
+	display: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}

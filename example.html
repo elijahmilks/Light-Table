@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./LightTable.js"></script>
+	<link rel="stylesheet" href="./LightTableStyle.css" />
+	<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
+	<style>
+		#LightTable {
+			height: 600px;
+			width: 1300px;
+			margin: auto;
+		}
+	</style>
+	<script>
+		let rowCount = 0;
+		let table = null;
+
+		window.onload = () => {
+			let columns = [
+				{ title: 'Number' },
+				{ title: 'Name' },
+				{ title: 'Age' },
+				{ title: 'Gender' },
+				{ title: 'Race' },
+				{ title: 'Grade' },
+				{ title: 'Maybe This' },
+				{ title: 'Test' },
+				{ title: 'Test Column 2' }
+			];
+
+			table = new LightTable({
+				target: 'LightTable',
+				columns: columns,
+				infiniteScroll: infiniteScroll,
+				sort: (column, direction) => {
+					console.log('sort: ' + column + ' ' + direction);
+				}
+			});
+
+			infiniteScroll();
+		}
+
+		const infiniteScroll = () => {
+			let rows = [];
+
+			for (let i = 0; i < 160; i++) {
+				rows.push({
+					'Number': { value: rowCount },
+					'Name': { value: 'Elijah Wilkes' },
+					'Age': { value: 20 },
+					'Gender': { value: 'M' },
+					'Race': { value: 'W' },
+					'Grade': { value: 9 },
+					'Maybe This': { value: 'Maybe not' },
+					'Test': { value: 'testing' },
+					'Test Column 2': { value: 'pls' }
+				});
+
+				rowCount++;
+			}
+
+			table.addRows(rows);
+		}
+	</script>
+
+	<style>
+		/* JUST ON THIS TEST (assumed table is in a container) */
+		#LightTable {
+			width: 1000px;
+			height: 800px;
+			margin: auto;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<div id="LightTable"></div>
+</body>
+</html>

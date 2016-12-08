@@ -5,7 +5,7 @@ A light weight, responsive JS table framework. Meant to work in cooperation with
 include all of the required files
 ```
 <script src="./LightTable.js"></script>
-<link rel="stylesheet" href="./LightTableStyle.css" />
+<link rel="stylesheet" href="./css/LightTableStyle.css" />
 <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
 ```
 
@@ -56,3 +56,7 @@ The first keys ('Name' and 'Age') correspond to column titles. The related objec
 - `value` will be the string displayed in the cell
 - `className` is a string to be added as a class to the cell
 - `id` is a string to be set as the id of the cell
+
+
+### remove all rows
+`table.clearRows()` will remove all rows from the table.

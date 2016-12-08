@@ -60,3 +60,10 @@ The first keys ('Name' and 'Age') correspond to column titles. The related objec
 
 ### remove all rows
 `table.clearRows()` will remove all rows from the table.
+
+### export table
+`table.exportTable(type, name, innderHTMLParse)`
+
+- `type` expects a string: 'csv', 'excel' or 'pdf'. PDF export requires pdfMake.js to be included.
+- `name` expects a string that will be the name of the file
+- `innerHTMLParse` expects a function that will be ran on each cell, though this is not required. This function is passed a parameter of the innerHTML of each cell, and the output is what is put in the exported file.

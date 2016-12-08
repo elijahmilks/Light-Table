@@ -56,3 +56,7 @@ The first keys ('Name' and 'Age') correspond to column titles. The related objec
 - `value` will be the string displayed in the cell
 - `className` is a string to be added as a class to the cell
 - `id` is a string to be set as the id of the cell
+
+
+### remove all rows
+`table.clearRows()` will remove all rows from the table.

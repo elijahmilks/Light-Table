@@ -1,79 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="./LightTable.js"></script>
-	<link rel="stylesheet" href="./css/LightTableStyle.css" />
-	<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
-	<style>
-		#LightTable {
-			height: 600px;
-			width: 1300px;
-			margin: auto;
-		}
-	</style>
-	<script>
-		let rowCount = 0;
-		let table = null;
+<script>
+window.onload = () => {
+	let rows = [];
 
-		window.onload = () => {
-			let columns = [
-				{ title: 'Number' },
-				{ title: 'Name' },
-				{ title: 'Age' },
-				{ title: 'Gender' },
-				{ title: 'Race' },
-				{ title: 'Grade' },
-				{ title: 'Maybe This' },
-				{ title: 'Test' },
-				{ title: 'Test Column 2' }
-			];
+	for (let i = 0; i < 100; i++) {
+		rows[i] = {
+			'ID': { value: i },
+			'Last Name': { value: 'Wilkes' },
+			'First Name': { value: 'Elijah' },
+			'Middle Initial': { value: 'E' },
+			'Status': { value: 'Active' },
+			'Username': { value: 'elijahmilks' }
+		};
+	}
 
-			table = new LightTable({
-				target: 'LightTable',
-				columns: columns,
-				infiniteScroll: infiniteScroll,
-				sort: (column, direction) => {
-					console.log('sort: ' + column + ' ' + direction);
-				}
-			});
+	const infiniteScroll = () => {
+		window.table.addRows(rows);
+	}
 
-			infiniteScroll();
-		}
+	const sort = (column, direction) => {
+		console.log('sort: ' + column + ' - ' + direction);
+	}
 
-		const infiniteScroll = () => {
-			let rows = [];
+	window.table = new LightTable({
+		target: 'container',
+		columns: [
+			{ title: 'ID' },
+			{ title: 'First Name' },
+			{ title: 'Middle Initial' },
+			{ title: 'Last Name' },
+			{ title: 'Status' },
+			{ title: 'Username' }
+		],
+		rows: rows,
+		infiniteScroll: infiniteScroll,
+		sort: sort
+	});
 
-			for (let i = 0; i < 160; i++) {
-				rows.push({
-					'Number': { value: rowCount },
-					'Name': { value: 'Elijah Wilkes' },
-					'Age': { value: 20 },
-					'Gender': { value: 'M' },
-					'Race': { value: 'W' },
-					'Grade': { value: 9 },
-					'Maybe This': { value: 'Maybe not' },
-					'Test': { value: 'testing' },
-					'Test Column 2': { value: 'pls' }
-				});
+	document.getElementById('csv').addEventListener('click', () => {
+		window.table.exportTable('csv', 'RWD_Table');
+	});
 
-				rowCount++;
-			}
+	document.getElementById('xls').addEventListener('click', () => {
+		window.table.exportTable('xls', 'RW_XLS_TALBE');
+	});
 
-			table.addRows(rows);
-		}
-	</script>
+	document.getElementById('pdf').addEventListener('click', () => {
+		window.table.exportTable('pdf', 'RWD_pdf');
+	});
 
-	<style>
-		/* JUST ON THIS TEST (assumed table is in a container) */
-		#LightTable {
-			width: 1000px;
-			height: 800px;
-			margin: auto;
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-		}
-	</style>
+	document.getElementById('print').addEventListener('click', () => {
+		window.table.exportTable('print', 'RWD_print');
+	});
+}
+</script>
+
+<script src="./LightTable.js"></script>
+
+<script src="./lib/pdfmake.min.js"></script>
+<script src="./lib/vfs_fonts.js"></script>
+<link rel="stylesheet" href="./css/LT-style.css" />
+
+<style>
+#container {
+	width: 80%;
+	height: 700px;
+	border: 1px solid #000;
+	margin: auto;
+}
+</style>
+
 </head>
 <body>
-	<div id="LightTable"></div>
+
+<div id="container"></div>
+
+<div id="csv">CSV</div>
+<div id="xls">XLS</div>
+<div id="pdf">PDF</div>
+<div id="print">Print</div>
+
 </body>
 </html>
